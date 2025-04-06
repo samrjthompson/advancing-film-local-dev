@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  advancing-film-frontend:
+    image: advancing-film-frontend
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.advancing-film-frontend.rule=PathPrefix(`/`)
+      - traefik.http.routers.advancing-film-frontend.priority=1
+    expose:
+      - 8080
+    networks:
+      - traefik-net
+    ports:
+      - "3000:3000"
+networks:
+  traefik-net:
+    external: true
